@@ -20,9 +20,8 @@ public class JDBCBookRepository implements BookRepository {
 
     @Override
     public Book save(Book book) {
-        String sql = String.format("insert into dimigo_book values('%s', '%s', '%d', '%s')", book.getBookName(), book.getAuthor(), book.getPublicationYear(), book.getPublisher());
-        Connection conn = null;
-        conn = DataSourceUtils.getConnection(dataSource);
+        String sql = String.format("insert into dimigo_book(book_name, author, publication_year, publisher) values('%s', '%s', '%d', '%s')", book.getBookName(), book.getAuthor(), book.getPublicationYear(), book.getPublisher());
+        Connection conn = DataSourceUtils.getConnection(dataSource);
         Statement stmt = null;
         ResultSet rs = null;
         try {
@@ -35,6 +34,8 @@ public class JDBCBookRepository implements BookRepository {
                 System.out.println("ID 조회 실패");
             }
         } catch (SQLException e) {
+            System.out.println("err ");
+            System.out.println(e);
         } finally {
             closeConnection(conn, stmt, rs);
         }
@@ -133,8 +134,7 @@ public class JDBCBookRepository implements BookRepository {
     public ArrayList<Book> findByPublisher(String publisher) {
         ArrayList<Book> arr = new ArrayList<Book>();
         String sql = String.format("select * from dimigo_book where publisher = '%s'", publisher);
-        Connection conn = null;
-        conn = DataSourceUtils.getConnection(dataSource);
+        Connection conn = DataSourceUtils.getConnection(dataSource);
         Statement stmt = null;
         ResultSet rs = null;
         try {
