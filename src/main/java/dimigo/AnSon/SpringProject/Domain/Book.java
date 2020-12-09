@@ -2,10 +2,19 @@ package dimigo.AnSon.SpringProject.Domain;
 
 public class Book {
 
+    int id;
     String bookName;
     String author;
     int publicationYear;
     String publisher;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getBookName() {
         return bookName;

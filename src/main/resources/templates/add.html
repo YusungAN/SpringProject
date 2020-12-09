@@ -39,8 +39,10 @@
             <div class="form-group">
                 <input type="text" name="title" class="form-control input" placeholder="책 이름을 입력해주세요" autocomplete="off">
                 <input type="text" name="author" class="form-control input" placeholder="작가를 입력해주세요" autocomplete="off">
-                <input type="text" name="publisher" class="form-control input-publish" placeholder="출판사를 입력해주세요" autocomplete="off">
-                <input type="text" name="publication_year" class="form-control input-publish" placeholder="출판년도를 입력해주세요" autocomplete="off">
+                <div style="display: flex">
+                    <input type="text" name="publisher" class="form-control input-publish" style="width: 48.5%; margin-right: 3%;" placeholder="출판사를 입력해주세요" autocomplete="off">
+                    <input type="text" name="publication_year" class="form-control input-publish" style="width: 48.5%;" placeholder="출판년도를 입력해주세요" autocomplete="off">
+                </div>
             </div>
             <input type="submit" class="btn btn-dark bmd" value="추가"/>
         </form>
