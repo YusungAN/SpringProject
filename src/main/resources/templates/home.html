@@ -2,9 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>책 정보 조회</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
-<body>
-    <p>덩기덕쿵덕</p>
+
+<body style="background: rgb(224, 231, 236)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand bmd nav-title" href="/">메인화면</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav tr">
+                <li class="nav-item">
+                    <a class="nav-link nav-content" href="/read">책 정보 조회</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-content" href="/add">책 정보 추가</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-content" href="/modify">책 정보 수정</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-content" href="/delete">책 정보 삭제</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="title bmd">도서정보 관리 서비스</h2>
+    <p class="explanation tr">서비스 이용은 상단 바를 통해 이용해주세요~</p>
+    <p class="explanation s-co-md">2414 손호진 2415 안유성</p>
 </body>
 </html>

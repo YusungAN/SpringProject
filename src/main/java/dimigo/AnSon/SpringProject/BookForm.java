@@ -5,6 +5,15 @@ public class BookForm {
     String author;
     int publicationYear;
     String publisher;
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getBookName() {
         return bookName;

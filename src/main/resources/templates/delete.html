@@ -1,4 +1,4 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>책 정보 삭제</title>
@@ -11,7 +11,7 @@
 
 <body style="background: rgb(224, 231, 236)">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand bmd nav-title" href="main.html">메인화면</a>
+      <a class="navbar-brand bmd nav-title" href="/">메인화면</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,16 +34,38 @@
       </div>
     </nav>
     <p class="title bmd">책 정보 삭제</p>
-    <p class="explanation s-co-md">삭제할 책의 제목이나 작가를 입력해주세요.</p>
+    <p class="explanation s-co-md">삭제할 책의 제목을 입력해주세요.</p>
     <div class="container">
-        <form class = "s-co-md" action="" method ="post" style="margin-top: 30px">
+        <form class = "s-co-md" action="/delete/search" method ="get" style="margin-top: 30px">
             <div class="form-group" style="display: flex">
-                <select class="form-select form-select-lg" aria-label="도서검색" style="width: 10%; margin-right: 1%; border-radius: 5px; border-color: lightgray;">
-                    <option value="title" selected>책 제목</option>
+                <select name="field" style="display: none;">
+                    <option value="title" selected></option>
                 </select>
-                <input type="text" name="book_title" class="form-control" style="width: 79%; margin-right: 1%" placeholder="입력해주세요" autocomplete="off">
-                <input type="submit" class="btn btn-dark bmd" style="width: 9%" value="정보 검색"/>
+                <input type="text" name="search_input" class="form-control" style="width: 90%; margin-right: 1%" placeholder="책 제목을 입력해주세요" autocomplete="off">
+                <input type="submit" class="btn btn-dark bmd" style="width: 9%" value="검색"/>
             </div>
+        </form>
+    </div>
+
+    <div class = "error tr" th:if="${info == null}">검색된 책 정보가 없습니다.</div>
+    <div class="container" th:if="${info != null}">
+        <div class="card social-distancing card_style" th:if="${info != null}" style="align-content: center">
+            <div class="card-body">
+                <h4 class="card-title bmd" th:text="${info[0].bookName}">책 제목</h4>
+                <h5 class="card-subtitle tr" th:text="${info[0].author}">저자</h5>
+                <h5 class="card-subtitle s-d s-co-md" th:text="${info[0].publisher}">출판사</h5>
+                <h6 class="card-text s-d s-co-md text-muted" th:text="${info[0].publicationYear}">출판년도</h6>
+            </div>
+        </div>
+        <form class = "s-co-md" action="/delete/del" method ="post" style="margin-top: 30px">
+            <div class="form-group" style="display: none;">
+                <input type="number" name="id" th:value="${info[0].id}">
+                <input type="text" name="bookName" th:value="${info[0].bookName}">
+                <input type="text" name="author" th:value="${info[0].author}"  >
+                <input type="text" name="publisher" th:value="${info[0].publisher}">
+                <input type="text" name="publicationYear" th:value="${info[0].publicationYear}" >
+            </div>
+            <input type="submit" class="btn btn-dark bmd" style="margin-left: 50px" value="정말 삭제하시겠습니까?"/>
         </form>
     </div>
 </body>

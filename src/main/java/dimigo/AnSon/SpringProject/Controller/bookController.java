@@ -47,7 +47,7 @@ public class bookController {
     }
 
     @GetMapping("/search")
-    public String Search(@RequestParam("field") String field, @RequestParam("book_title") String content, Model model) {
+    public String Search(@RequestParam("field") String field, @RequestParam("search_input") String content, Model model) {
         ArrayList<Book> arr;
         arr = bs.search(field, content);
         model.addAttribute("arr", arr);
@@ -55,13 +55,51 @@ public class bookController {
     }
 
     @GetMapping("/modify")
-    public String ModifyPage() {
+    public String ModifyPage() {return "modify";}
+
+    @GetMapping("/modify/search")
+    public String SearchModify(@RequestParam("field") String field, @RequestParam("search_input") String content, Model model){
+        ArrayList<Book> info;
+        info = bs.search(field, content);
+        model.addAttribute("info", info);
         return "modify";
+    }
+
+    @PostMapping("/modify/mod")
+    public String SearchModify(BookForm bf){
+        Book b = new Book();
+        b.setId(bf.getId());
+        b.setBookName(bf.getBookName());
+        b.setAuthor(bf.getAuthor());
+        b.setPublisher(bf.getPublisher());
+        b.setPublicationYear(bf.getPublicationYear());
+        bs.modify(b);
+        return "redirect:/modify";
     }
 
     @GetMapping("/delete")
     public String DeletePage() {
         return "delete";
+    }
+
+    @GetMapping("/delete/search")
+    public String SearchDelete(@RequestParam("field") String field, @RequestParam("search_input") String content, Model model){
+        ArrayList<Book> info;
+        info = bs.search(field, content);
+        model.addAttribute("info", info);
+        return "delete";
+    }
+
+    @PostMapping("/delete/del")
+    public String DeleteBook(BookForm bf){
+        Book b = new Book();
+        b.setId(bf.getId());
+        b.setBookName(bf.getBookName());
+        b.setAuthor(bf.getAuthor());
+        b.setPublisher(bf.getPublisher());
+        b.setPublicationYear(bf.getPublicationYear());
+        bs.delete(b);
+        return "redirect:/delete";
     }
 
     @PostMapping("/books/add")
