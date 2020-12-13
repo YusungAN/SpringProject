@@ -20,6 +20,13 @@ public class JDBCBookRepository implements BookRepository {
 
     @Override
     public Book save(Book book) {
+        boolean cantsave = bookAlreadyExist(book.getBookName());
+        if (cantsave) {
+            System.out.println(cantsave);
+            Book b = new Book();
+            b.setId(-2);
+            return b;
+        }
         String sql = String.format("insert into dimigo_book(book_name, author, publication_year, publisher) values('%s', '%s', '%d', '%s')", book.getBookName(), book.getAuthor(), book.getPublicationYear(), book.getPublisher());
         Connection conn = DataSourceUtils.getConnection(dataSource);
         Statement stmt = null;
@@ -190,6 +197,24 @@ public class JDBCBookRepository implements BookRepository {
         } finally {
             closeConnection(conn, stmt, null);
         }
+    }
+
+    public boolean bookAlreadyExist(String title) {
+        String sql = String.format("select * from dimigo_book where book_name = '%s'", title);
+        Connection conn = null;
+        conn = DataSourceUtils.getConnection(dataSource);
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            closeConnection(conn, stmt, null);
+        }
+        return true;
     }
 
     public void closeConnection(Connection c, Statement s, ResultSet r){

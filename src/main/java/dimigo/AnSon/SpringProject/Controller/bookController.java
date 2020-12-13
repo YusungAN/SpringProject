@@ -37,8 +37,9 @@ public class bookController {
         b.setPublisher(bf.getPublisher());
         int res = bs.join(b);
         System.out.println(res);
-        if (res != -1) return "redirect:read";
-        else return "error";
+        if (res == -1) return "error";
+        else if (res == -2) return "alreadyexist";
+        else return "redirect:read";
     }
 
     @GetMapping("/read")

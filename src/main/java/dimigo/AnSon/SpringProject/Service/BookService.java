@@ -17,7 +17,8 @@ public class BookService {
     public int join(Book b){
         try {
             Book res = bookRepository.save(b);
-            return res.getId();
+            if (res != null) return res.getId();
+            else return -2;
         } catch (Exception e) {
             return -1;
         }
