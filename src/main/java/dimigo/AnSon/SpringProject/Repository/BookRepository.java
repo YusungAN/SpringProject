@@ -4,6 +4,7 @@ import dimigo.AnSon.SpringProject.Domain.Book;
 
 import java.util.ArrayList;
 
+//기본 메소드가 담긴 인터페이스
 public interface BookRepository {
 
     Book save(Book book);

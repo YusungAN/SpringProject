@@ -1,5 +1,6 @@
 package dimigo.AnSon.SpringProject.Domain;
 
+// 책 정보의 기본 틀인 클래스
 public class Book {
 
     int id;
