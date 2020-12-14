@@ -36,9 +36,11 @@
 
     <p class="title bmd">책 정보 수정</p>
     <p class="explanation s-co-md">수정하실 책의 제목을 입력해주세요.</p>
+    <!--책 제목 검색폼-->
     <div class="container">
         <form class = "s-co-md" action="/modify/search" method ="get" style="margin-top: 30px">
             <div class="form-group" style="display: flex">
+                <!--field 값을 title로 고정하기 위해 option 값을 title 로 고정해두고, 화면에 보여주지는 않는다.-->
                 <select name="field" style="display: none;">
                     <option value="title" selected></option>
                 </select>
@@ -48,10 +50,14 @@
         </form>
     </div>
 
+    <!--검색 결과가 없거나 처음 들어갔을때, 검색된 책정보가 없음을 띄워준다.-->
     <div class = "error tr" th:if="${info == null}">검색된 책 정보가 없습니다.</div>
+    <!--검사결과가 있다면, 수정폼을 띄워준다.-->
     <div class="container" th:if="${info != null}">
     <form class = "s-co-md" action="/modify/mod" method ="post" style="margin-top: 30px">
+        <!--책 추가와 같은 형식의 폼으로 띄워주되, 저장된 책 정보에 대해서는 value값을 통해 미리 입력폼에 띄워주어 부분수정이 가능하게 한다.-->
         <div class="form-group">
+            <!--책 제목에 대해 중복 방지 검사를 수행하여 검사 결과 ArrayList의 첫번째 원소에 대해서 값을 불러옴-->
             <input type="number" name="id" th:value="${info[0].id}" style="display: none">
             <input type="text" name="bookName" th:value="${info[0].bookName}" class="form-control input" placeholder="책 이름을 입력해주세요" autocomplete="off">
             <input type="text" name="author" th:value="${info[0].author}" class="form-control input" placeholder="작가를 입력해주세요" autocomplete="off">
