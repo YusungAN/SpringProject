@@ -1,5 +1,7 @@
 package dimigo.AnSon.SpringProject;
 
+
+// post 받을 때 사용한 클래스
 public class BookForm {
     String bookName;
     String author;
