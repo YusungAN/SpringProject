@@ -65,7 +65,7 @@ public class JDBCBookRepository implements BookRepository {
             stmt = conn.createStatement(); // Statement 객체 생성
             rs = stmt.executeQuery(sql); // sql 실행
 
-            while (rs.next()) { // 불러온 정보를 ArrayList에 저장 (사실 책 제목은 중복되는거 없음 ㅎㅎ)
+            while (rs.next()) { // 불러온 정보를 ArrayList에 저장
                 Book b = new Book();
                 b.setId(rs.getInt(1));
                 b.setBookName(rs.getString(2));
@@ -94,7 +94,7 @@ public class JDBCBookRepository implements BookRepository {
             stmt = conn.createStatement(); // Statement 객체 생성
             rs = stmt.executeQuery(sql); // sql 실행
 
-            while (rs.next()) { // 불러온 데이처 ArrayList로 만듦
+            while (rs.next()) { // 불러온 데이터 ArrayList로 만듦
                 Book b = new Book();
                 b.setId(rs.getInt(1));
                 b.setBookName(rs.getString(2));

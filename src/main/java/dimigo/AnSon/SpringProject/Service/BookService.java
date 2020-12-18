@@ -44,7 +44,7 @@ public class BookService {
         return null;
     }
 
-    // 책 정보 수정하는 메소드, BookRepository의 changeBookInfo
+    // 책 정보 수정하는 메소드, BookRepository의 changeBookInfo 활용
     public void modify(Book book) {
         bookRepository.changeBookInfo(book);
     }
