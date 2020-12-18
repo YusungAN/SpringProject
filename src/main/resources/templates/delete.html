@@ -46,8 +46,9 @@
             </div>
         </form>
     </div>
-
+    <!--검색 결과가 없거나 처음 들어갔을때, 검색된 책정보가 없음을 띄워준다.-->
     <div class = "error tr" th:if="${info == null}">검색된 책 정보가 없습니다.</div>
+    <!--검색한 책 정보를 카드로 띄워준다.-->
     <div class="container" th:if="${info != null}">
         <div class="card social-distancing card_style" th:if="${info != null}" style="align-content: center">
             <div class="card-body">
@@ -57,6 +58,7 @@
                 <h6 class="card-text s-d s-co-md text-muted" th:text="${info[0].publicationYear}">출판년도</h6>
             </div>
         </div>
+        <!--삭제 버튼, 불러온 책에대한 정보를 폼에 불러오고, 버튼만 띄워주어 위의 카드 아래에 삭제 버튼이 뜨게 한다.-->
         <form class = "s-co-md" action="/delete/del" method ="post" style="margin-top: 30px">
             <div class="form-group" style="display: none;">
                 <input type="number" name="id" th:value="${info[0].id}">

@@ -17,7 +17,7 @@ public class bookController {
     public int id = 1;
     private BookService bs;
 
-    // DI
+    // DI_ 의존성 주입
     @Autowired
     public bookController(BookService bs) {
         this.bs = bs;
@@ -29,7 +29,7 @@ public class bookController {
         return "add";
     }
 
-    // 책 추가할 때 호출하는 것
+    // 책 추가할 시 호출하는 것
     @PostMapping("/add")
     public String PostBook(BookForm bf) {
         Book b = new Book();
@@ -51,7 +51,7 @@ public class bookController {
         return "read";
     }
 
-    // 검색할 때 부르는 것
+    // 책을 검색할 때 호출
     @GetMapping("/search")
     public String Search(@RequestParam("field") String field, @RequestParam("search_input") String content, Model model) {
         ArrayList<Book> arr;
@@ -64,7 +64,7 @@ public class bookController {
     @GetMapping("/modify")
     public String ModifyPage() {return "modify";}
 
-    // 수정 페이지에서 수정할 책 검색할 때 호출하는 것
+    // 수정 페이지에서 수정할 책을 검색할 때 호출하는 것
     @GetMapping("/modify/search")
     public String SearchModify(@RequestParam("field") String field, @RequestParam("search_input") String content, Model model){
         ArrayList<Book> info;
@@ -101,7 +101,7 @@ public class bookController {
         return "delete";
     }
 
-    // 삭제 페이지에서 삭제할 책 보내줄 때 쓰는 것
+    // 삭제 페이지에서 삭제할 책에 대한 정보를 보내줄 때 쓰는 것
     @PostMapping("/delete/del")
     public String DeleteBook(BookForm bf){
         Book b = new Book();
